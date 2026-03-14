@@ -1,3 +1,5 @@
+sfe_249_new_extractor=1
+
 # -----------------------------------------------------------
 # Метаданные пакета
 # -----------------------------------------------------------
@@ -49,7 +51,7 @@ sources=(
 
 # Контрольные суммы для проверки целостности.
 # ВНИМАНИЕ: 'SKIP' удобно для тестов, но для реального пакета
-# лучше вычислить и указать SHA256 хеш файла 'hello.sh'!
+# лучше вычислить и указать SHA256 хеш файла 'hello-world.sh'!
 checksums=('SKIP')
 
 # -----------------------------------------------------------
@@ -76,10 +78,10 @@ package() {
     # Устанавливаем исполняемый файл.
     # install-binary <источник_в_srcdir> <имя_в_системе>
     # Эта команда сама поместит файл в правильное место (/usr/bin) внутри $pkgdir.
-    install-binary "${srcdir}/hello.sh" "hello"
+    install-binary "${srcdir}/hello-world.sh" "hello-world"
 
     # Альтернативный вариант с использованием стандартной команды install:
-    # install -Dm755 "${srcdir}/hello.sh" "${pkgdir}/usr/bin/hello"
+    # install -Dm755 "${srcdir}/hello-world.sh" "${pkgdir}/usr/bin/hello-world"
 }
 
 # files() - опционально, но рекомендуется для RPM.
@@ -87,7 +89,7 @@ package() {
 files() {
     # files-find-binary ищет исполняемые файлы, установленные в /usr/bin.
     # Можно указать конкретное имя или маску.
-    files-find-binary "hello"
+    files-find-binary "hello-world"
 
     # Если бы у нас были документация или конфиги, мы бы добавили:
     # files-find-doc "hello-world"
