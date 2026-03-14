@@ -11,7 +11,7 @@ group="Development/Tools"
 desc="$summary. Outputs 'Hello, World!' to stdout."
 desc_ru="$summary_ru. Выводит 'Hello, World!' в стандартный вывод."
 maintainer="Anexya <anexya@example.ru>"
-architectures=("x86_64" "aarch64")
+architectures=("x86_64")
 homepage="https://github.com/Anexya"
 license=("MIT")
 
@@ -40,15 +40,13 @@ build() {
 package() {
     # Установка файлов в пакет
     mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/usr/share/doc/hello-world"
-    mkdir -p "$pkgdir/usr/share/licenses/hello-world"
+#    mkdir -p "$pkgdir/usr/share/doc/hello-world"
+#    mkdir -p "$pkgdir/usr/share/licenses/hello-world"
 
     # Копируем исполняемый файл
     cp hello-world "$pkgdir/usr/bin/hello-world"
     chmod +x "$pkgdir/usr/bin/hello-world"
 
-    # Копируем README
-    cat > "$pkgdir/usr/share/doc/hello-world/README" << 'README_EOF'
 # Hello World Package
 
 This package contains a simple "Hello, World!" program.
