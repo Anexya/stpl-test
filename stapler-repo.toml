@@ -1,0 +1,13 @@
+[repo]
+title = "Anexya's Test Package Repository"
+summary = "Test repository for learning Stapler"
+description = """
+This repository contains test packages created for learning Stapler.
+All packages are designed to demonstrate package creation process.
+"""
+
+homepage = "https://github.com/Anexya/stpl-test"
+icon = "https://cdn-icons-png.flaticon.com/512/1041/1041426.png"
+url = "https://github.com/Anexya/stpl-test.git"
+ref = "main"
+report_url = "https://github.com/Anexya/stpl-test/issues"
