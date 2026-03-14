@@ -8,7 +8,7 @@ sfe_249_new_extractor=1
 name='hello-world'
 
 # Обязательно: версия программы (upstream version).
-version='1.0'
+version='1.1'
 
 # Обязательно: номер сборки пакета для данной версии.
 # Увеличиваем при изменениях в рецепте сборки.
@@ -45,9 +45,8 @@ license=('MIT')
 
 # Массив исходных файлов. Файлы попадут в директорию $srcdir.
 # Используем локальный файл.
-sources=(
-    'https://github.com/Anexya/stpl-test/blob/main/hello-world'
-)
+
+sources=('https://raw.githubusercontent.com/Anexya/stpl-test/main/hello-world')
 
 # Контрольные суммы для проверки целостности.
 # ВНИМАНИЕ: 'SKIP' удобно для тестов, но для реального пакета
