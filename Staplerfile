@@ -46,7 +46,7 @@ package() {
     # Копируем исполняемый файл
     cp hello-world "$pkgdir/usr/bin/hello-world"
     chmod +x "$pkgdir/usr/bin/hello-world"
-
+		}
 # Hello World Package
 
 This package contains a simple "Hello, World!" program.
