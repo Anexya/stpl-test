@@ -16,8 +16,6 @@ homepage="https://github.com/Anexya"
 license=("MIT")
 
 # === Зависимости ===
-deps_altlinux=()
-deps_altlinux_p10=()
 deps_altlinux_sisyphus=()
 
 # === Источники ===
@@ -40,19 +38,13 @@ build() {
 package() {
     # Установка файлов в пакет
     mkdir -p "$pkgdir/usr/bin"
-#    mkdir -p "$pkgdir/usr/share/doc/hello-world"
-#    mkdir -p "$pkgdir/usr/share/licenses/hello-world"
 
     # Копируем исполняемый файл
     cp hello-world "$pkgdir/usr/bin/hello-world"
     chmod +x "$pkgdir/usr/bin/hello-world"
 		}
-# Hello World Package
 
-This package contains a simple "Hello, World!" program.
-
-## Usage
-
-Run the program:
-```bash
-hello-world
+		files() {
+		    files-find-binary hello-world
+		    files-find "/usr/bin/hello-world"
+		}
