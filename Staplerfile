@@ -1,52 +1,54 @@
-# === Метаданные пакета ===
-name = "hello-world"
-version = "1.0.0"
-release = "1"
-summary = "Simple Hello World program"
-desc = """A classic Hello World program.
-This package demonstrates basic package creation with Stapler."""
-group = "Development/Tools"
-license = ["MIT"]
-maintainer = "Anexya <is.petrov@vk.com>"
-homepage = "https://github.com/Anexya"
+# === SFE-249 compliant Staplerfile for hello-world ===
+
+sfe_249_new_extractor=1
+
+name="hello-world"
+version="1.0.0"
+release="1"
+summary="Simple Hello World program"
+summary_ru="Простая программа Hello World"
+group="Development/Tools"
+desc="$summary. Outputs 'Hello, World!' to stdout."
+desc_ru="$summary_ru. Выводит 'Hello, World!' в стандартный вывод."
+maintainer="Anexya <anexya@example.ru>"
+architectures=("x86_64" "aarch64")
+homepage="https://github.com/Anexya"
+license=("MIT")
 
 # === Зависимости ===
-# Нет зависимостей — наша программа использует только bash
-deps_altlinux = []
+deps_altlinux=()
+deps_altlinux_p10=()
+deps_altlinux_sisyphus=()
 
 # === Источники ===
-# Мы не скачиваем ничего из интернета — создаём программу локально
-# sources = []  # Не нужно, так как файлы уже есть
+# Так как наша программа простая, мы не скачиваем ничего извне
+# sources=() # Не используется
+
+# === Контрольные суммы ===
+# checksums=() # Не используется
 
 # === Функции сборки ===
 prepare() {
-    # Подготовка — здесь ничего не нужно
     echo "Preparing hello-world package..."
 }
 
 build() {
-    # Сборка — тоже не нужна, так как наша программа готова
     echo "Building hello-world package..."
+    # Ничего не собираем, просто копируем файл
 }
 
 package() {
     # Установка файлов в пакет
-    # $pkgdir — временная директория, куда Stapler копирует файлы
-    
-    # Создаём директорию для бинарников
     mkdir -p "$pkgdir/usr/bin"
-    
-#Копируем нашу программу
-    cp hello-world "$pkgdir/usr/bin/hello-world"
-    
-    # Делаем её исполняемой
-    chmod +x "$pkgdir/usr/bin/hello-world"
-    
-    # Создаём директорию для документации
     mkdir -p "$pkgdir/usr/share/doc/hello-world"
-    
-    # Создаём файл README
-    cat > "$pkgdir/usr/share/doc/hello-world/README"
+    mkdir -p "$pkgdir/usr/share/licenses/hello-world"
+
+    # Копируем исполняемый файл
+    cp hello-world "$pkgdir/usr/bin/hello-world"
+    chmod +x "$pkgdir/usr/bin/hello-world"
+
+    # Копируем README
+    cat > "$pkgdir/usr/share/doc/hello-world/README" << 'README_EOF'
 # Hello World Package
 
 This package contains a simple "Hello, World!" program.

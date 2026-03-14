@@ -1,0 +1,15 @@
+500 Can't connect to -:80 (Неизвестное имя или служба)
+Content-Type: text/plain
+Client-Date: Sat, 14 Mar 2026 09:28:29 GMT
+Client-Warning: Internal response
+
+404 Not Found
+Connection: close
+Date: Sat, 14 Mar 2026 09:28:29 GMT
+Server: nginx/1.14.1
+Content-Length: 169
+Content-Type: text/html; charset=utf-8
+Client-Date: Sat, 14 Mar 2026 09:28:29 GMT
+Client-Peer: 62.122.170.171:80
+Client-Response-Num: 1
+
