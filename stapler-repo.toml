@@ -1,20 +1,15 @@
 [repo]
-# Минимальная версия Stapler, необходимая для работы
 minVersion = "v0.0.29"
-
-# Название твоего репозитория
 title = "Anexya's Test Package Repository"
-
-# Краткое описание
 summary = "Test repository for learning Stapler"
-
-…homepage = "https://github.com/Anexya/stpl-test"
-
-# Иконка (можно оставить как в примере или заменить на свою)
+description = """
+This repository contains test packages created for learning Stapler.
+All packages are designed to demonstrate package creation process.
+"""
+url = "https://github.com/Anexya/stpl-test.git"
+mirrors = []
+report_url = "https://github.com/Anexya/stpl-test/issues?title=Package+{{ .BasePackageName }}"
+homepage = "https://github.com/Anexya/stpl-test"
 icon = "https://cdn-icons-png.flaticon.com/512/1041/1041426.png"
-
-# Тип репозитория (необязательно)
 type = "git"
-
-# Ветка по умолчанию
 ref = "main"
