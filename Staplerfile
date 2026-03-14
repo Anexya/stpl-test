@@ -22,10 +22,10 @@ summary='A simple "Hello, World!" shell script'
 desc='This package provides a classic example script that prints "Hello, World!" to the console.'
 
 # Сайт программы (если есть).
-homepage='https://example.com/hello-world'
+homepage='https://github.com/Anexya/stpl-test/blob/main/'
 
 # Поддерживающий (обязательно укажите свои данные).
-maintainer='Your Name <your.email@example.ru>'
+maintainer='Anexya <your.email@example.ru>'
 
 # -----------------------------------------------------------
 # Технические характеристики пакета
@@ -44,7 +44,7 @@ license=('MIT')
 # Массив исходных файлов. Файлы попадут в директорию $srcdir.
 # Используем локальный файл.
 sources=(
-    'local://hello.sh'
+    'https://github.com/Anexya/stpl-test/blob/main/hello-world'
 )
 
 # Контрольные суммы для проверки целостности.
