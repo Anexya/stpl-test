@@ -1,50 +1,64 @@
-# === SFE-249 compliant Staplerfile for hello-world ===
+# Имя пакета (должно совпадать с именем директории)
+name='hello-world'
 
-sfe_249_new_extractor=1
+# Версия программы (указываем свою, например 1.0)
+version='1.0'
 
-name="hello-world"
-version="1.0.0"
-release="1"
-summary="Simple Hello World program"
-summary_ru="Простая программа Hello World"
-group="Development/Tools"
-desc="$summary. Outputs 'Hello, World!' to stdout."
-desc_ru="$summary_ru. Выводит 'Hello, World!' в стандартный вывод."
-maintainer="Anexya <anexya@example.ru>"
-architectures=("x86_64")
-homepage="https://github.com/Anexya"
-license=("MIT")
+# Релиз для наших сборок (начинаем с 1)
+release='1'
 
-# === Зависимости ===
-deps_altlinux_sisyphus=()
+# Краткое описание
+summary='A simple "Hello, World!" shell script'
 
-# === Источники ===
-# Так как наша программа простая, мы не скачиваем ничего извне
-# sources=() # Не используется
+# Полное описание
+desc='This package provides a classic example script that prints "Hello, World!" to the console.'
 
-# === Контрольные суммы ===
-# checksums=() # Не используется
+# Домашняя страница (можно оставить пустым или указать заглушку)
+homepage='https://github.com/Anexya/stpl-test/tree/main'
 
-# === Функции сборки ===
-prepare() {
-    echo "Preparing hello-world package..."
-}
+# Поддерживающий (ваши данные)
+maintainer='Anexya <petrossikk@rambler.ru>'
 
+# Группа пакета для RPM (одна из стандартных)
+group='System/Base'
+
+# Поддерживаемые архитектуры (скрипт не зависит от архитектуры)
+architectures=('all')
+
+# Лицензия (укажите подходящую, например MIT)
+license=('MIT')
+
+# Исходные файлы. Сам скрипт должен лежать рядом со Staplerfile.
+# Используем протокол local:// для локальных файлов.
+sources=(
+    'local://hello-world.sh'
+)
+
+# Контрольная сумма (пропускаем проверку для локального простого файла,
+# но в реальном проекте лучше вычислить sha256 и указать её)
+checksums=('SKIP')
+
+# Основная функция сборки. Для простого скрипта она не нужна.
 build() {
-    echo "Building hello-world package..."
-    # Ничего не собираем, просто копируем файл
+    # Ничего не делаем, так как исходный файл — уже готовый скрипт
+    true
 }
 
+# Функция упаковки. Здесь мы устанавливаем файлы в $pkgdir.
 package() {
-    # Установка файлов в пакет
-    mkdir -p "$pkgdir/usr/bin"
+    # Создаём нужную директорию в виртуальной корневой файловой системе пакета
+    install -dm755 "${pkgdir}/usr/bin"
+    
+    # Устанавливаем наш скрипт с правами на исполнение
+    # install -Dm755 <что> <куда>
+    install -Dm755 "${srcdir}/hello-world.sh" "${pkgdir}/usr/bin/hello-world"
+    
+    # Альтернатива с использованием вспомогательной команды:
+    # install-binary "${srcdir}/hello-world.sh" "hello-world"
+}
 
-    # Копируем исполняемый файл
-    cp hello-world "$pkgdir/usr/bin/hello-world"
-    chmod +x "$pkgdir/usr/bin/hello-world"
-		}
-
-		files() {
-		    files-find-binary hello-world
-		    files-find "/usr/bin/hello-world"
-		}
+# Вспомогательная функция для указания всех файлов пакета (для корректного удаления в RPM)
+files() {
+    # Указываем, что в пакете есть бинарник в /usr/bin
+    files-find-binary "hello-world"
+}
